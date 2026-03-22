@@ -19,13 +19,14 @@ public class ProjetoController {
 
     @GetMapping
     public ResponseEntity<List<ProjetoModel>> findAll(){
-        List<ProjetoModel> projeto = projetoService.findAll();
-        return ResponseEntity.ok().body(projeto);
+        List<ProjetoModel> projetos = projetoService.findAll();
+        return ResponseEntity.ok().body(projetos);
     }
 
     @GetMapping("/{id}")
-    public ProjetoModel buscarProjetoPorId(@PathVariable Long id){
-        return projetoService.buscarProjetoPorId(id);
+    public ResponseEntity<ProjetoModel> buscarProjetoPorId(@PathVariable Long id){
+       ProjetoModel projeto =  projetoService.buscarProjetoPorId(id);
+       return ResponseEntity.ok(projeto);
     }
 
     @PostMapping

@@ -30,8 +30,11 @@ public class ProjetoService {
     }
 
     public ProjetoModel atualizarProjeto(Long id, ProjetoModel projetoModel){
-        ProjetoModel newProjetoModel = projetoRepository.findById(id).get();
-        return projetoRepository.save(projetoModel);
+        ProjetoModel novoProjeto = projetoRepository.findById(id).get();
+        novoProjeto.setNome(projetoModel.getNome());
+        novoProjeto.setDataInicio(projetoModel.getDataInicio());
+        novoProjeto.setDataFim(projetoModel.getDataFim());
+        return projetoRepository.save(novoProjeto);
     }
 
 
